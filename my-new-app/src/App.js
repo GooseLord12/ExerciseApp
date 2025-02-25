@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import RepetitionExercise from "./components/RepetitionExercise";
 import DurationExercise from "./components/DurationExercise";
-
+import RunningExercise from "./RunningExercise";
 
 const exercises = [
   { name: "Push-ups", type: "repetition" },
   { name: "Jump Rope", type: "duration" },
+  { name: "Running", type: "running" },
 ];
 
 function App() {
@@ -27,8 +28,10 @@ function App() {
           <button onClick={() => setSelectedExercise(null)}>Back</button>
           {selectedExercise.type === "repetition" ? (
             <RepetitionExercise name={selectedExercise.name} />
-          ) : (
+          ) : selectedExercise.type === "duration" ? (
             <DurationExercise name={selectedExercise.name} />
+          ) : (
+            <RunningExercise />
           )}
         </div>
       )}
